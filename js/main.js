@@ -1,15 +1,13 @@
-let minNumber = 0;
-let maxNumber = 6;
+const minNumber = 0;
+const maxNumber = 6;
 
 function getRandomInt (min, max) {
   if (min < 0 || max < 0) {
-    alert('Ошибка! Число не может быть меньше нуля. Пожалуйста, введите другое число');
-    return;
+    return 'Ошибка! Число не может быть меньше нуля. Пожалуйста, введите другое число';
   }
 
   if (max <= min) {
-    alert('Ошибка! Наибольшее число не может быть меньше или равно наименьшему числу. Пожалуйста, введите другое число');
-    return;
+    return 'Ошибка! Наибольшее число не может быть меньше или равно наименьшему числу. Пожалуйста, введите другое число';
   }
 
   min = Math.ceil(min);
@@ -20,8 +18,8 @@ function getRandomInt (min, max) {
 
 getRandomInt (minNumber,maxNumber);
 
-let userComment = 'Комментарий, написанный пользователем';
-let maxLength = 140;
+const userComment = 'Комментарий, написанный пользователем';
+const maxLengthString = 140;
 
 function checkMaxLengthString (string, maxLength) {
   if (string.length > maxLength) {
@@ -30,4 +28,4 @@ function checkMaxLengthString (string, maxLength) {
   return true;
 }
 
-checkMaxLengthString (userComment, maxLength);
+checkMaxLengthString (userComment, maxLengthString);
