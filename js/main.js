@@ -93,18 +93,20 @@ const calculateCommentID = function () {
 function createCard () {
   return {
     id: calculateCardID(),
-    url: 'photos/' + calculateUrlNumber() + '.jpg',
+    url: `photos/${calculateUrlNumber()}.jpg`,
     description: DESCRIPTIONS[calculateDescriptionNumber()],
     likes: getRandomPositiveInteger(15,200),
     comments: [{
       id: calculateCommentID(),
-      avatar: 'img/avatar-' + getRandomPositiveInteger(1,6) + '.svg',
+      avatar: `img/avatar-${getRandomPositiveInteger(1,6)}.svg`,
       message: getRandomArrayElement(MESSAGES),
       name: getRandomArrayElement(NAMES),
     }]
   };
 }
 
-const publishedPhotos = Array.from({length: PUBLISHED_PHOTOS_COUNT}, createCard);
+function publishedPhotos () {
+  return Array.from({length: PUBLISHED_PHOTOS_COUNT}, createCard);
+}
 
-console.log(publishedPhotos);
+publishedPhotos();
