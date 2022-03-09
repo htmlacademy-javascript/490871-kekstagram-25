@@ -1,5 +1,4 @@
-import {getRandomPositiveInteger} from './util.js';
-import {getRandomArrayElement} from './util.js';
+import {getRandomPositiveInteger, getRandomArrayElement} from './util.js';
 
 const PUBLISHED_PHOTOS_COUNT = 25;
 
@@ -81,4 +80,4 @@ const createCard = function () {
 
 const publishedPhotos = () => Array.from({length: PUBLISHED_PHOTOS_COUNT}, createCard);
 
-publishedPhotos();
+export {publishedPhotos};

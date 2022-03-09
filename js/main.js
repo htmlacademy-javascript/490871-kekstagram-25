@@ -1,1 +1,1 @@
-import './data.js';
+import './show-miniatures.js';
