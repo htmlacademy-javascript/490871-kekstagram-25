@@ -8,14 +8,12 @@ const usersPictures = publishedPhotos();
 
 const picturesFragment = document.createDocumentFragment();
 
-let pictureIndex = 0;
-
-usersPictures.forEach(({url, likes, comments}) => {
+usersPictures.forEach(({url, likes, comments,},index) => {
   const picture = templatePicture.cloneNode(true);
   picture.querySelector('.picture__img').src = url;
   picture.querySelector('.picture__comments').textContent = comments.length;
   picture.querySelector('.picture__likes').textContent = likes;
-  picture.dataset.pictureNumber = pictureIndex++;
+  picture.dataset.pictureNumber = index;
   picturesFragment.append(picture);
 });
 
