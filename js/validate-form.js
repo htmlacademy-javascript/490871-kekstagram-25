@@ -24,7 +24,7 @@ function checkHashtag () {
   const hashtagsArray = createHashtagsArray();
   const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
   return hashtagsArray.every((hashtag) => re.test(hashtag));
-};
+}
 
 function checkHashtagRepeats () {
   const hashtagsArray = createHashtagsArray();
@@ -35,7 +35,7 @@ function checkHashtagRepeats () {
       }
     }
   } return true;
-};
+}
 
 pristine.addValidator(
   hashtagsField,
@@ -63,7 +63,7 @@ pristine.addValidator(
   commentField,
   validateCommentField,
   'длина комментария не может составлять больше 140 символов'
-  );
+);
 
 
 uploadForm.addEventListener('submit', (evt) => {
