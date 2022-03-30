@@ -710,6 +710,10 @@ main {
   border-radius: 5px;
 }
 
+.text__container--invalid {
+  background-color: rgba(191, 44, 44, 0.7);;
+}
+
 
 /**
  * Кнопка для отправки изображения

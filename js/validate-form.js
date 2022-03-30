@@ -23,7 +23,7 @@ function checkHashtagLength () {
 function checkHashtag () {
   const hashtagsArray = createHashtagsArray();
   const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
-  return hashtagsArray.every((hashtag) => re.test(hashtag));
+  return hashtagsArray.every((hashtag) => re.test(hashtag)) || !hashtagsField.value;
 }
 
 function checkHashtagRepeats () {
