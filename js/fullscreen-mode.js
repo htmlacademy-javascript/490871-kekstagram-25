@@ -1,4 +1,5 @@
-import {usersPictures} from './show-miniatures.js';
+/*import {getData} from './api.js'
+import {renderUsersPictures} from './show-miniatures.js'
 
 const picturesContainer = document.querySelector('.pictures.container');
 
@@ -33,7 +34,7 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
-const fillComments = function (photoNumber) {
+const fillComments = function (photoNumber, usersPictures) {
   for (let j=0;j<usersPictures[photoNumber].comments.length;j++) {
     bigPictureSocialComments.insertAdjacentHTML('beforeend', `<li class="social__comment"><img class="social__picture" src="${usersPictures[photoNumber].comments[j].avatar}" alt='${usersPictures[photoNumber].comments[j].name}' width="35" height="35"><p class="social__text">${usersPictures[photoNumber].comments[j].message}</p></li>`);
   }
@@ -56,9 +57,9 @@ const fillPicturesContainer = function (evt) {
 
     const pictureNumber = evt.target.closest('a').dataset.pictureNumber;
 
-    bigPictureSocialCaption.textContent = usersPictures[pictureNumber].description;
+    bigPictureSocialCaption.textContent = loadedPhotos[pictureNumber].description;
 
-    fillComments(pictureNumber);
+    fillComments(pictureNumber, loadedPhotos);
 
     socialCommentCount.classList.add('hidden');
 
@@ -82,4 +83,4 @@ function closeUserModal () {
   document.removeEventListener('keydown', onPopupEscKeydown);
 
   bigPictureCancel.removeEventListener('click', closeUserModal);
-}
+}*/

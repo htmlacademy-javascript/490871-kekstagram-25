@@ -28,3 +28,9 @@ buttonBigger.addEventListener('click',() => {
     scaleValue.value = `${scaleNumber}%`;
     changeScale ();
   }});
+
+function resetScale () {
+  scaleNumber = 100;
+}
+
+export {resetScale};

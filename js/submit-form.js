@@ -1,7 +1,3 @@
-/*import {checkHashtag, checkHashtagRepeats} from './check-form.js';
-import {closeEditFile} from './upload-file.js';
-
-const uploadForm = document.querySelector('.img-upload__form');
 const templateError = document.querySelector('#error').content.querySelector('.error');
 const errorMessage = templateError.cloneNode(true);
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
@@ -55,26 +51,4 @@ function closeSuccessMessage () {
   successMessage.removeEventListener('click', closeSuccessMessage);
 }
 
-const pristine = new Pristine(uploadForm, {
-  classTo: 'img-upload__text',
-  errorClass: 'img-upload__text--invalid',
-  successClass: 'img-upload__text--valid',
-  errorTextParent: 'img-upload__text',
-  errorTextTag: 'span',
-  errorTextClass: 'text__error'
-});
-
-uploadForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-
-  const isValid = pristine.validate();
-
-  if (isValid && checkHashtag() && checkHashtagRepeats()) {
-    uploadForm.submit();
-    successSubmit();
-    closeEditFile();
-  } else {
-    loseSubmit();
-    closeEditFile();
-  }
-});*/
+export {loseSubmit, successSubmit};

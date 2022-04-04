@@ -1,4 +1,7 @@
+import {sendData} from './api.js';
+
 const uploadForm = document.querySelector('.img-upload__form');
+const submitButton = uploadForm.querySelector('.img-upload__submit');
 const hashtagsField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
@@ -14,6 +17,16 @@ const pristine = new Pristine(uploadForm, {
   errorTextTag: 'p',
   errorTextClass: 'text__error'
 });
+
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Публикую...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
 
 function checkHashtagLength () {
   const hashtagsArray = createHashtagsArray();
@@ -65,10 +78,27 @@ pristine.addValidator(
   'длина комментария не может составлять больше 140 символов'
 );
 
+const setUserFormSubmit = (onSuccess, onFail, closeForm) => {
+  uploadForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const isValid= pristine.validate();
+    if (isValid) {
+      blockSubmitButton();
+      sendData(
+        () => {
+          closeForm();
+          onSuccess();
+          unblockSubmitButton();
+        },
+        () => {
+          closeForm();
+          onFail();
+          unblockSubmitButton();
+        },
+        new FormData(evt.target),);
+    }
+  });
+};
 
-uploadForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const isValid= pristine.validate();
-  if (isValid) {
-    uploadForm.submit();
-  }});
+
+export {setUserFormSubmit};

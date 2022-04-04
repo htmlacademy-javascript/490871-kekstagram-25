@@ -2,6 +2,7 @@ const sliderEffect = document.querySelector('.effect-level__slider');
 const valueEffect = document.querySelector('.effect-level__value');
 const userPhoto = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList =document.querySelector('.effects__list');
+const effectNone = document.querySelector('#effect-none');
 
 const effects = {
   chrome: {filterName: 'grayscale', minValue: 0, maxValue: 1, step: 0.1, unitOfMeasurement: ''},
@@ -32,7 +33,7 @@ noUiSlider.create(sliderEffect, {
   },
 });
 
-sliderEffect.setAttribute('disabled', true);
+sliderEffect.style.display = 'none';
 
 let nameOfEffect;
 let unitOfEffect;
@@ -52,8 +53,8 @@ function onFilterChange (evt) {
         step: 0.1,
         connect: 'lower',
       });
-      sliderEffect.setAttribute('disabled', true);
       userPhoto.removeAttribute('style');
+      sliderEffect.style.display = 'none';
     } else {
       sliderEffect.noUiSlider.updateOptions ({
         range: {
@@ -65,10 +66,11 @@ function onFilterChange (evt) {
         connect: 'lower',
       });
 
-      sliderEffect.removeAttribute('disabled', true);
+      sliderEffect.removeAttribute('display', 'none');
       nameOfEffect = arrayEffect.filterName;
       unitOfEffect = arrayEffect.unitOfMeasurement;
       userPhoto.style.filter = `${nameOfEffect}(${valueEffect.value}${unitOfEffect})`;
+      sliderEffect.style.display = 'block';
     }
   }
 }
@@ -79,3 +81,21 @@ sliderEffect.noUiSlider.on('update', () => {
   valueEffect.value = sliderEffect.noUiSlider.get();
   userPhoto.style.filter = `${nameOfEffect}(${valueEffect.value}${unitOfEffect})`;
 });
+
+function resetEffect () {
+  userPhoto.className = '';
+  effectNone.checked = true;
+  sliderEffect.noUiSlider.updateOptions ({
+    range: {
+      min: 0,
+      max: 1,
+    },
+    start: 0,
+    step: 0.1,
+    connect: 'lower',
+  });
+  sliderEffect.style.display = 'none';
+  userPhoto.removeAttribute('style');
+}
+
+export {resetEffect};
