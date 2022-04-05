@@ -1,13 +1,11 @@
-const picturesContainer = document.querySelector('.pictures.container');
-
-const getData = (onSuccess) => {
+const getData = (onSuccess, onFail) => {
   fetch('https://25.javascript.pages.academy/kekstagram/data')
     .then((response) => response.json())
     .then((photos) => {
       onSuccess(photos);
     })
     .catch(() => {
-      picturesContainer.insertAdjacentText ('afterbegin', 'Не получилось загрузить фотографии...');
+      onFail();
     });
 };
 

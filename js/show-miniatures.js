@@ -1,5 +1,4 @@
 const picturesContainer = document.querySelector('.pictures.container');
-
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 
 const renderUsersPictures = (usersPictures) => {
@@ -17,4 +16,8 @@ const renderUsersPictures = (usersPictures) => {
   picturesContainer.append(picturesFragment);
 };
 
-export {renderUsersPictures};
+const showLoadFail = () => {
+  picturesContainer.insertAdjacentText ('afterbegin', 'Не получилось загрузить фотографии...');
+};
+
+export {renderUsersPictures, showLoadFail};

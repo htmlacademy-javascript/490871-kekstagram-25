@@ -3,6 +3,7 @@ const valueEffect = document.querySelector('.effect-level__value');
 const userPhoto = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList =document.querySelector('.effects__list');
 const effectNone = document.querySelector('#effect-none');
+const effectLevelBlock = document.querySelector('.effect-level');
 
 const effects = {
   chrome: {filterName: 'grayscale', minValue: 0, maxValue: 1, step: 0.1, unitOfMeasurement: ''},
@@ -33,7 +34,7 @@ noUiSlider.create(sliderEffect, {
   },
 });
 
-sliderEffect.style.display = 'none';
+effectLevelBlock.style.display = 'none';
 
 let nameOfEffect;
 let unitOfEffect;
@@ -54,7 +55,7 @@ function onFilterChange (evt) {
         connect: 'lower',
       });
       userPhoto.removeAttribute('style');
-      sliderEffect.style.display = 'none';
+      effectLevelBlock.style.display = 'none';
     } else {
       sliderEffect.noUiSlider.updateOptions ({
         range: {
@@ -70,7 +71,7 @@ function onFilterChange (evt) {
       nameOfEffect = arrayEffect.filterName;
       unitOfEffect = arrayEffect.unitOfMeasurement;
       userPhoto.style.filter = `${nameOfEffect}(${valueEffect.value}${unitOfEffect})`;
-      sliderEffect.style.display = 'block';
+      effectLevelBlock.style.display = 'block';
     }
   }
 }
@@ -94,7 +95,7 @@ function resetEffect () {
     step: 0.1,
     connect: 'lower',
   });
-  sliderEffect.style.display = 'none';
+  effectLevelBlock.style.display = 'none';
   userPhoto.removeAttribute('style');
 }
 
