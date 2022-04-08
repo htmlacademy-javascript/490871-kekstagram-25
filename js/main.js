@@ -29,6 +29,4 @@ pageLoad
   .then(showSortPhotosBlock)
   .catch();
 
-
-
 setUserFormSubmit(successSubmit, loseSubmit, closeEditFile);

@@ -1,8 +1,5 @@
 const sortPhotosBlock = document.querySelector('.img-filters');
 const sortingForm = document.querySelector('.img-filters__form');
-const filterDefault = sortingForm.querySelector('#filter-default');
-const filterRandom = sortingForm.querySelector('#filter-random');
-const filterDiscussed = sortingForm.querySelector('#filter-discussed');
 
 function showSortPhotosBlock () {
   sortPhotosBlock.classList.remove('img-filters--inactive');
@@ -20,8 +17,8 @@ sortingForm.addEventListener('click', onSortChange);
 function reShowPhotos (cb) {
   sortingForm.addEventListener('click', (evt) => {
     if (evt.target.matches('.img-filters__button')) {
-      cb()
-  }})
+      cb();
+    }});
 }
 
 

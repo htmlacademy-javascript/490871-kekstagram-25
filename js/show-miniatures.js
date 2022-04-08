@@ -23,54 +23,53 @@ let comparePhotos = function (photoA, photoB) {
   const valuePhotoA = getPhotoId(photoA);
   const valuePhotoB = getPhotoId(photoB);
   return valuePhotoA - valuePhotoB;
- };
+};
 
- filterDefault.addEventListener('click', () => {
-   comparePhotos = function (photoA, photoB) {
+filterDefault.addEventListener('click', () => {
+  comparePhotos = function (photoA, photoB) {
     const valuePhotoA = getPhotoId(photoA);
     const valuePhotoB = getPhotoId(photoB);
     return valuePhotoA - valuePhotoB;
-   };
-   photosCount = 25;
- })
+  };
+  photosCount = 25;
+});
 
- filterRandom.addEventListener('click', () => {
+filterRandom.addEventListener('click', () => {
   comparePhotos = function (photoA, photoB) {
-   const valuePhotoA = getRandomPhoto(photoA);
-   const valuePhotoB = getRandomPhoto(photoB);
-   return valuePhotoB - valuePhotoA;
+    const valuePhotoA = getRandomPhoto(photoA);
+    const valuePhotoB = getRandomPhoto(photoB);
+    return valuePhotoB - valuePhotoA;
   };
   photosCount = 10;
-})
+});
 
 filterDiscussed.addEventListener('click', () => {
   comparePhotos = function (photoA, photoB) {
-   const valuePhotoA = getCommentsNumber(photoA);
-   const valuePhotoB = getCommentsNumber(photoB);
-   return valuePhotoB - valuePhotoA;
+    const valuePhotoA = getCommentsNumber(photoA);
+    const valuePhotoB = getCommentsNumber(photoB);
+    return valuePhotoB - valuePhotoA;
   };
   photosCount = 25;
-})
+});
 
 const renderUsersPictures = (usersPictures) => {
   const picturesFragment = document.createDocumentFragment();
-  console.log(comparePhotos);
 
   usersPictures
-  .slice()
-  .sort(comparePhotos)
-  .slice(0, photosCount)
-  .forEach(({url, likes, comments,},index) => {
-    const picture = templatePicture.cloneNode(true);
-    picture.querySelector('.picture__img').src = url;
-    picture.querySelector('.picture__comments').textContent = comments.length;
-    picture.querySelector('.picture__likes').textContent = likes;
-    picture.dataset.pictureNumber = index;
-    picturesFragment.append(picture);
-  });
+    .slice()
+    .sort(comparePhotos)
+    .slice(0, photosCount)
+    .forEach(({url, likes, comments,},index) => {
+      const picture = templatePicture.cloneNode(true);
+      picture.querySelector('.picture__img').src = url;
+      picture.querySelector('.picture__comments').textContent = comments.length;
+      picture.querySelector('.picture__likes').textContent = likes;
+      picture.dataset.pictureNumber = index;
+      picturesFragment.append(picture);
+    });
 
   const pictures = picturesContainer.querySelectorAll('.picture');
-  pictures.forEach(picture => picture.remove());
+  pictures.forEach((picture) => picture.remove());
   picturesContainer.append(picturesFragment);
 };
 
