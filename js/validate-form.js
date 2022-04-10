@@ -5,9 +5,7 @@ const submitButton = uploadForm.querySelector('.img-upload__submit');
 const hashtagsField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
-const createHashtagsArray = function () {
-  return hashtagsField.value.split(' ');
-};
+const createHashtagsArray = () => hashtagsField.value.split(' ');
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'text__container',
@@ -28,18 +26,18 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-function checkHashtagLength () {
+const checkHashtagLength = () => {
   const hashtagsArray = createHashtagsArray();
   return hashtagsArray.length < 6;
-}
+};
 
-function checkHashtag () {
+const checkHashtag = () => {
   const hashtagsArray = createHashtagsArray();
   const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
   return hashtagsArray.every((hashtag) => re.test(hashtag)) || !hashtagsField.value;
-}
+};
 
-function checkHashtagRepeats () {
+const checkHashtagRepeats = () => {
   const hashtagsArray = createHashtagsArray();
   for (let i = 0; i < hashtagsArray.length; i++) {
     for (let j = 0; j < i; j++) {
@@ -48,7 +46,7 @@ function checkHashtagRepeats () {
       }
     }
   } return true;
-}
+};
 
 pristine.addValidator(
   hashtagsField,
@@ -68,9 +66,7 @@ pristine.addValidator(
   'хэш-теги не должны повторяться (хэш-теги нечувствительны к регистру)'
 );
 
-function validateCommentField (value) {
-  return value.length <= 140;
-}
+const validateCommentField = (value) => value.length <= 140;
 
 pristine.addValidator(
   commentField,

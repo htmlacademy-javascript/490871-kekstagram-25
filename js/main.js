@@ -11,22 +11,10 @@ import {debounce} from './util.js';
 
 const RERENDER_DELAY = 500;
 
-const pageLoad = new Promise((resolve, reject) => {
-  resolve();
-  reject();
-});
-
-pageLoad
-  .then(
-    getData((photos) => {
-      renderUsersPictures(photos);
-      reShowPhotos(debounce(
-        () => renderUsersPictures(photos),
-        RERENDER_DELAY,
-      ));
-    }, showLoadFail)
-  )
-  .then(showSortPhotosBlock)
-  .catch();
+getData((photos) => {
+  renderUsersPictures(photos);
+  reShowPhotos(debounce(() => renderUsersPictures(photos),RERENDER_DELAY,));
+  showSortPhotosBlock();
+}, showLoadFail);
 
 setUserFormSubmit(successSubmit, loseSubmit, closeEditFile);

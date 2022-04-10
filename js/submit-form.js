@@ -5,7 +5,7 @@ const successMessage = templateSuccess.cloneNode(true);
 const errorButton = errorMessage.querySelector('.error__button');
 const successButton = successMessage.querySelector('.success__button');
 
-const loseSubmit = function () {
+const loseSubmit = () => {
   document.body.append(errorMessage);
   document.addEventListener('keydown', onFormEscKeydown);
   errorButton.addEventListener('click', closeErrorMessage);
@@ -16,7 +16,7 @@ const loseSubmit = function () {
   });
 };
 
-const successSubmit = function () {
+const successSubmit = () => {
   document.body.append(successMessage);
   document.addEventListener('keydown', onFormEscKeydown);
   successButton.addEventListener('click', closeSuccessMessage);
@@ -37,7 +37,7 @@ function onFormEscKeydown (evt) {
   }
 }
 
-function closeErrorMessage () {
+function closeErrorMessage() {
   errorMessage.remove();
   document.removeEventListener('keydown', onFormEscKeydown);
   errorButton.removeEventListener('click', closeErrorMessage);

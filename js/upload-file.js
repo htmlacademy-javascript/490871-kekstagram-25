@@ -18,7 +18,7 @@ const onFormEscKeydown = (evt) => {
   }
 };
 
-const resetFilters = function () {
+const resetFilters = () => {
   uploadInput.value = '';
   textHashtags.value = '';
   textDescription.value = '';
@@ -28,7 +28,7 @@ const resetFilters = function () {
   resetEffect();
 };
 
-const openEditFile = function () {
+const openEditFile = () => {
   uploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
 };

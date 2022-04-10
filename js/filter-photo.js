@@ -39,7 +39,7 @@ effectLevelBlock.style.display = 'none';
 let nameOfEffect;
 let unitOfEffect;
 
-function onFilterChange (evt) {
+const onFilterChange = (evt) => {
   const effectName = evt.target.value;
   const arrayEffect = effects[effectName];
   if (evt.target.matches('input[type="radio"]')) {
@@ -54,7 +54,7 @@ function onFilterChange (evt) {
         step: 0.1,
         connect: 'lower',
       });
-      userPhoto.removeAttribute('style');
+      userPhoto.style.filter = '';
       effectLevelBlock.style.display = 'none';
     } else {
       sliderEffect.noUiSlider.updateOptions ({
@@ -74,7 +74,7 @@ function onFilterChange (evt) {
       effectLevelBlock.style.display = 'block';
     }
   }
-}
+};
 
 effectsList.addEventListener('change', onFilterChange);
 
@@ -83,7 +83,7 @@ sliderEffect.noUiSlider.on('update', () => {
   userPhoto.style.filter = `${nameOfEffect}(${valueEffect.value}${unitOfEffect})`;
 });
 
-function resetEffect () {
+const resetEffect = () => {
   userPhoto.className = '';
   effectNone.checked = true;
   sliderEffect.noUiSlider.updateOptions ({
@@ -97,6 +97,6 @@ function resetEffect () {
   });
   effectLevelBlock.style.display = 'none';
   userPhoto.removeAttribute('style');
-}
+};
 
 export {resetEffect};

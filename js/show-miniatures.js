@@ -6,27 +6,18 @@ const filterDiscussed = document.querySelector('#filter-discussed');
 
 let photosCount = 25;
 
-function getCommentsNumber (photo) {
-  return photo.comments.length;
-}
+const getCommentsNumber = (photo) => photo.comments.length;
 
-function getPhotoId (photo) {
-  return photo.id;
-}
+const getPhotoId = (photo) => photo.id;
 
-function getRandomPhoto (photo) {
-  photo.random = Math.random();
-  return photo.random;
-}
-
-let comparePhotos = function (photoA, photoB) {
+let comparePhotos = (photoA, photoB) => {
   const valuePhotoA = getPhotoId(photoA);
   const valuePhotoB = getPhotoId(photoB);
   return valuePhotoA - valuePhotoB;
 };
 
 filterDefault.addEventListener('click', () => {
-  comparePhotos = function (photoA, photoB) {
+  comparePhotos = (photoA, photoB) => {
     const valuePhotoA = getPhotoId(photoA);
     const valuePhotoB = getPhotoId(photoB);
     return valuePhotoA - valuePhotoB;
@@ -35,16 +26,16 @@ filterDefault.addEventListener('click', () => {
 });
 
 filterRandom.addEventListener('click', () => {
-  comparePhotos = function (photoA, photoB) {
-    const valuePhotoA = getRandomPhoto(photoA);
-    const valuePhotoB = getRandomPhoto(photoB);
+  comparePhotos = () => {
+    const valuePhotoA = Math.random();
+    const valuePhotoB = Math.random();
     return valuePhotoB - valuePhotoA;
   };
   photosCount = 10;
 });
 
 filterDiscussed.addEventListener('click', () => {
-  comparePhotos = function (photoA, photoB) {
+  comparePhotos = (photoA, photoB) => {
     const valuePhotoA = getCommentsNumber(photoA);
     const valuePhotoB = getCommentsNumber(photoB);
     return valuePhotoB - valuePhotoA;

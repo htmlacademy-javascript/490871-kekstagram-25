@@ -10,10 +10,10 @@ const step = 25;
 
 scaleValue.value = `${scaleNumber}%`;
 
-function changeScale () {
+const changeScale = () => {
   const fraction = scaleNumber/100;
   userPhoto.style = `transform: scale(${fraction})`;
-}
+};
 
 buttonSmaller.addEventListener('click',() => {
   if (scaleNumber >= minValue + step) {
@@ -29,8 +29,8 @@ buttonBigger.addEventListener('click',() => {
     changeScale ();
   }});
 
-function resetScale () {
+const resetScale = () => {
   scaleNumber = 100;
-}
+};
 
 export {resetScale};
