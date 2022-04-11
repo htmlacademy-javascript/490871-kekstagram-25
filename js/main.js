@@ -8,6 +8,7 @@ import {getData} from './api.js';
 import './fullscreen-mode.js';
 import {showSortPhotosBlock, reShowPhotos} from './sort-photos.js';
 import {debounce} from './util.js';
+import './photo.js';
 
 const RERENDER_DELAY = 500;
 
