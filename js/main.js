@@ -5,7 +5,7 @@ import {setUserFormSubmit} from './validate-form.js';
 import './scale-photo.js';
 import './filter-photo.js';
 import {getData} from './api.js';
-import './fullscreen-mode.js';
+import {fillPicturesContainer} from './fullscreen-mode.js';
 import {showSortPhotosBlock, reShowPhotos} from './sort-photos.js';
 import {debounce} from './util.js';
 import './photo.js';
@@ -16,6 +16,7 @@ getData((photos) => {
   renderUsersPictures(photos);
   reShowPhotos(debounce(() => renderUsersPictures(photos),RERENDER_DELAY,));
   showSortPhotosBlock();
+  fillPicturesContainer(photos);
 }, showLoadFail);
 
 setUserFormSubmit(successSubmit, loseSubmit, closeEditFile);
