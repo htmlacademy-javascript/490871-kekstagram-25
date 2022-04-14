@@ -50,12 +50,12 @@ const renderUsersPictures = (usersPictures) => {
     .slice()
     .sort(comparePhotos)
     .slice(0, photosCount)
-    .forEach(({url, likes, comments,},index) => {
+    .forEach(({id, url, likes, comments,}) => {
       const picture = templatePicture.cloneNode(true);
       picture.querySelector('.picture__img').src = url;
       picture.querySelector('.picture__comments').textContent = comments.length;
       picture.querySelector('.picture__likes').textContent = likes;
-      picture.dataset.pictureNumber = index;
+      picture.dataset.pictureNumber = id;
       picturesFragment.append(picture);
     });
 
