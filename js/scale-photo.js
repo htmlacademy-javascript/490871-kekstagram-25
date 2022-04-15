@@ -3,10 +3,11 @@ const buttonBigger = document.querySelector('.scale__control--bigger');
 const scaleValue = document.querySelector('.scale__control--value');
 const userPhoto = document.querySelector('.img-upload__preview').querySelector('img');
 
+const MIN_VALUE = 25;
+const MAX_VALUE = 100;
+const STEP = 25;
+
 let scaleNumber = 100;
-const minValue = 25;
-const maxValue = 100;
-const step = 25;
 
 scaleValue.value = `${scaleNumber}%`;
 
@@ -16,15 +17,15 @@ const changeScale = () => {
 };
 
 buttonSmaller.addEventListener('click',() => {
-  if (scaleNumber >= minValue + step) {
-    scaleNumber = scaleNumber - step;
+  if (scaleNumber >= MIN_VALUE + STEP) {
+    scaleNumber = scaleNumber - STEP;
     scaleValue.value = `${scaleNumber}%`;
     changeScale ();
   }});
 
 buttonBigger.addEventListener('click',() => {
-  if (scaleNumber <= maxValue - step) {
-    scaleNumber = scaleNumber + step;
+  if (scaleNumber <= MAX_VALUE - STEP) {
+    scaleNumber = scaleNumber + STEP;
     scaleValue.value = `${scaleNumber}%`;
     changeScale ();
   }});
