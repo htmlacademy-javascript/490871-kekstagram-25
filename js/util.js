@@ -1,10 +1,3 @@
-const userComment = 'Комментарий, написанный пользователем';
-const maxLengthString = 140;
-
-const checkMaxLengthString = (string, maxLength) => string.length <= maxLength;
-
-checkMaxLengthString (userComment, maxLengthString);
-
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -23,4 +16,3 @@ const debounce = (callback, timeoutDelay = 500) => {
 };
 
 export {getRandomPositiveInteger, getRandomArrayElement, debounce};
-//checkMaxLengthString, getRandomPositiveInteger, getRandomArrayElement - функции htmlacademy
