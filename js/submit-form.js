@@ -5,6 +5,30 @@ const successMessage = templateSuccess.cloneNode(true);
 const errorButton = errorMessage.querySelector('.error__button');
 const successButton = successMessage.querySelector('.success__button');
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+const onFormEscKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeErrorMessage();
+    closeSuccessMessage();
+  }
+};
+
+function closeErrorMessage () {
+  errorMessage.remove();
+  document.removeEventListener('keydown', onFormEscKeydown);
+  errorButton.removeEventListener('click', closeErrorMessage);
+  errorMessage.removeEventListener('click', closeErrorMessage);
+}
+
+function closeSuccessMessage () {
+  successMessage.remove();
+  document.removeEventListener('keydown', onFormEscKeydown);
+  successButton.removeEventListener('click', closeSuccessMessage);
+  successMessage.removeEventListener('click', closeSuccessMessage);
+}
+
 const loseSubmit = () => {
   document.body.append(errorMessage);
   document.addEventListener('keydown', onFormEscKeydown);
@@ -26,29 +50,5 @@ const successSubmit = () => {
     evt.stopPropagation();
   });
 };
-
-const isEscapeKey = (evt) => evt.key === 'Escape';
-
-function onFormEscKeydown (evt) {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    closeErrorMessage();
-    closeSuccessMessage();
-  }
-}
-
-function closeErrorMessage() {
-  errorMessage.remove();
-  document.removeEventListener('keydown', onFormEscKeydown);
-  errorButton.removeEventListener('click', closeErrorMessage);
-  errorMessage.removeEventListener('click', closeErrorMessage);
-}
-
-function closeSuccessMessage () {
-  successMessage.remove();
-  document.removeEventListener('keydown', onFormEscKeydown);
-  successButton.removeEventListener('click', closeSuccessMessage);
-  successMessage.removeEventListener('click', closeSuccessMessage);
-}
 
 export {loseSubmit, successSubmit};

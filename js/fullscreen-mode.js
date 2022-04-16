@@ -48,6 +48,18 @@ const loadComments = () => {
   comments.slice(0,commentsNumber).forEach((comment) => bigPictureSocialComments.insertAdjacentHTML('beforeend', comment));
 };
 
+function closeUserModal () {
+  bigPictureContainer.classList.add('hidden');
+  body.classList.remove('modal-open');
+  bigPictureSocialComments.textContent = '';
+
+  document.removeEventListener('keydown', onPopupEscKeydown);
+
+  bigPictureCancel.removeEventListener('click', closeUserModal);
+
+  commentsLoader.removeEventListener('click', loadComments);
+}
+
 const fillComments = (photoNumber, usersPictures) => {
   comments = [];
 
@@ -97,17 +109,5 @@ const fillPicturesContainer =  (loadedPhotos) => {
     }
   });
 };
-
-function closeUserModal () {
-  bigPictureContainer.classList.add('hidden');
-  body.classList.remove('modal-open');
-  bigPictureSocialComments.textContent = '';
-
-  document.removeEventListener('keydown', onPopupEscKeydown);
-
-  bigPictureCancel.removeEventListener('click', closeUserModal);
-
-  commentsLoader.removeEventListener('click', loadComments);
-}
 
 export {fillPicturesContainer};
