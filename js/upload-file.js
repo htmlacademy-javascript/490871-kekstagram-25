@@ -1,5 +1,6 @@
 import {resetScale} from './scale-photo.js';
 import {resetEffect} from './filter-photo.js';
+import {pristineReset} from './validate-form.js';
 
 const uploadInput = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -26,6 +27,7 @@ const resetFilters = () => {
   resetScale();
   userPhoto.style = 'transform: scale(1)';
   resetEffect();
+  pristineReset();
 };
 
 const openEditFile = () => {

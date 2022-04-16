@@ -4,7 +4,10 @@ const filterDefault = document.querySelector('#filter-default');
 const filterRandom = document.querySelector('#filter-random');
 const filterDiscussed = document.querySelector('#filter-discussed');
 
-let photosCount = 25;
+const PHOTOS_ON_PAGE = 25;
+const RANDOM_PHOTOS_ON_PAGE = 10;
+
+let photosCount = PHOTOS_ON_PAGE;
 
 const getCommentsNumber = (photo) => photo.comments.length;
 
@@ -22,7 +25,7 @@ filterDefault.addEventListener('click', () => {
     const valuePhotoB = getPhotoId(photoB);
     return valuePhotoA - valuePhotoB;
   };
-  photosCount = 25;
+  photosCount = PHOTOS_ON_PAGE;
 });
 
 filterRandom.addEventListener('click', () => {
@@ -31,7 +34,7 @@ filterRandom.addEventListener('click', () => {
     const valuePhotoB = Math.random();
     return valuePhotoB - valuePhotoA;
   };
-  photosCount = 10;
+  photosCount = RANDOM_PHOTOS_ON_PAGE;
 });
 
 filterDiscussed.addEventListener('click', () => {
@@ -40,7 +43,7 @@ filterDiscussed.addEventListener('click', () => {
     const valuePhotoB = getCommentsNumber(photoB);
     return valuePhotoB - valuePhotoA;
   };
-  photosCount = 25;
+  photosCount = PHOTOS_ON_PAGE;
 });
 
 const renderUsersPictures = (usersPictures) => {

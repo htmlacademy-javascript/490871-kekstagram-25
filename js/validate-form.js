@@ -74,6 +74,10 @@ pristine.addValidator(
   'длина комментария не может составлять больше 140 символов'
 );
 
+const pristineReset = () => {
+  pristine.reset();
+};
+
 const setUserFormSubmit = (onSuccess, onFail, closeForm) => {
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -97,4 +101,4 @@ const setUserFormSubmit = (onSuccess, onFail, closeForm) => {
 };
 
 
-export {setUserFormSubmit};
+export {setUserFormSubmit, pristineReset};
